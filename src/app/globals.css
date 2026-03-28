@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  
+  /* Premium Eco-SaaS Palette - Sophisticated Green/Teal Blend */
+  --primary-50: #f0fdf4;
+  --primary-100: #dcfce7;
+  --primary-200: #bbf7d0;
+  --primary-300: #86efac;
+  --primary-400: #4ade80;
+  --primary-500: #10b981; /* Emerald-Teal balance */
+  --primary-600: #059669;
+  --primary-700: #047857;
+  --primary-800: #065f46;
+  --primary-900: #064e3b;
+  
+  --secondary-50: #f0f9ff;
+  --secondary-100: #e0f2fe;
+  --secondary-200: #bae6fd;
+  --secondary-300: #7dd3fc;
+  --secondary-400: #38bdf8;
+  --secondary-500: #0ea5e9;
+  --secondary-600: #0284c7;
+  --secondary-700: #0369a1;
+  
+  --neutral-50: #f8fafc;
+  --neutral-100: #f1f5f9;
+  --neutral-200: #e2e8f0;
+  --neutral-300: #cbd5e1;
+  --neutral-400: #94a3b8;
+  --neutral-500: #64748b;
+  --neutral-600: #475569;
+  --neutral-700: #334155;
+  --neutral-800: #1e293b;
+  --neutral-900: #0f172a;
+
+  /* Modern SaaS Design Tokens */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  
+  --color-primary-50: var(--primary-50);
+  --color-primary-100: var(--primary-100);
+  --color-primary-500: var(--primary-500);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+
+  --color-secondary-50: var(--secondary-50);
+  --color-secondary-100: var(--secondary-100);
+  --color-secondary-500: var(--secondary-500);
+  --color-secondary-600: var(--secondary-600);
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+* {
+  border-color: var(--neutral-200);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar - Minimal High-End Look */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--neutral-200);
+  border-radius: 20px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neutral-300);
+}
+
+/* Redefined Base Typography */
+h1 { @apply text-4xl lg:text-5xl font-black text-neutral-900 tracking-tight leading-[1.1] mb-6; }
+h2 { @apply text-2xl lg:text-3xl font-extrabold text-neutral-900 tracking-tight leading-snug mb-4; }
+h3 { @apply text-lg lg:text-xl font-bold text-neutral-900 tracking-tight mb-2; }
+p { @apply text-neutral-600 leading-relaxed font-medium mb-4; }
+
+/* 🖱️ Global Interactive Element Polish */
+button, a, [role="button"] {
+  @apply cursor-pointer transition-all duration-300 ease-in-out;
+}
+
+button:active, a:active {
+  @apply scale-[0.98];
+}
+
+/* 🧬 Professional Hover States */
+.card-hover {
+  @apply hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-[0.22,1,0.36,1];
+}
+
+.link-underline {
+  @apply relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-primary-500 after:transition-all after:duration-300 hover:after:w-full;
+}
+
+/* Enhanced Focus States */
+.focus-ring {
+  @apply focus:outline-none focus:ring-4 focus:ring-primary-500/10 focus:border-primary-500 transition-all duration-300;
+}
+
+/* Sophisticated Gradient Text */
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-br from-primary-600 via-primary-500 to-secondary-500;
+}
+
+/* Tabular Nums for Dashboards */
+.numbers-tabular {
+  @apply tabular-nums;
+}
+
+/* Glassmorphism Classes */
+.glass {
+  @apply bg-white/70 backdrop-blur-md border border-white/20;
+}
+.glass-dark {
+  @apply bg-neutral-900/80 backdrop-blur-lg border border-white/10;
+}
