@@ -25,6 +25,14 @@
 
 ---
 
+## 🎨 UI/UX Preview
+
+<p align="center">
+  <img src="https://i.postimg.cc/nVdd5hpZ/localhost-3000.png" width="100%" alt="EcoSpark Hub Frontend Preview">
+</p>
+
+---
+
 ## 🎨 Design Philosophy
 
 EcoSpark Hub is built on the principle of **Atomic Design**, ensuring that every component is reusable, performant, and accessible. The frontend leverages **Next.js 16** and **React 19** to deliver a "blink-and-you-miss-it" experience, with kinetic animations powered by **Framer Motion**.
