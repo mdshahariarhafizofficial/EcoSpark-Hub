@@ -1,13 +1,14 @@
 'use client';
 
 import Link from 'next/link';
+import { Logo } from '@/components/ui/Logo';
+
 import { useAuth } from '@/contexts/AuthContext';
 import {
   Menu, X, LogOut, Settings, LayoutDashboard,
   ChevronDown, Home, Activity, Lightbulb,
   FileText, Info, HelpCircle, Mail
 } from 'lucide-react';
-import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
@@ -51,20 +52,8 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo Section */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 flex items-center justify-center transform group-hover:scale-105 transition-all">
-              <Image 
-                src="/favicon.png" 
-                alt="EcoSpark Hub" 
-                width={36} 
-                height={36} 
-                className="object-contain"
-                priority
-              />
-            </div>
-            <span className="font-extrabold text-xl tracking-tight text-neutral-900">
-              EcoSpark<span className="text-primary-600">Hub</span>
-            </span>
+          <Link href="/" className="group">
+            <Logo />
           </Link>
 
           {/* Center Navigation (Desktop) */}

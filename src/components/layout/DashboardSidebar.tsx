@@ -10,7 +10,6 @@ import {
   Plus,
   ChevronRight,
   LogOut,
-  Leaf,
   ShieldAlert,
   X,
   Activity,
@@ -23,6 +22,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { useAuth } from '@/contexts/AuthContext';
+import { Logo } from '@/components/ui/Logo';
 
 interface DashboardSidebarProps {
   isOpen?: boolean;
@@ -72,13 +72,8 @@ export function DashboardSidebar({ isOpen, setIsOpen }: DashboardSidebarProps) {
              <X className="w-5 h-5" />
            </button>
         )}
-        <Link href="/" className="flex items-center gap-2 group mb-10 w-fit">
-          <div className="bg-primary-600 p-1.5 flex items-center justify-center rounded-xl group-hover:rotate-12 transition-transform shadow-lg shadow-primary-500/20">
-            <Leaf className="w-5 h-5 text-white" />
-          </div>
-          <span className="font-black text-xl tracking-tighter text-neutral-900">
-            EcoSpark<span className="text-primary-600">Hub</span>
-          </span>
+        <Link href="/" className="group mb-10">
+          <Logo />
         </Link>
         
         <Link href="/dashboard/new">
