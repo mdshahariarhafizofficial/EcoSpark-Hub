@@ -72,7 +72,7 @@ export function DashboardSidebar({ isOpen, setIsOpen }: DashboardSidebarProps) {
              <X className="w-5 h-5" />
            </button>
         )}
-        <Link href="/" className="group mb-10">
+        <Link href="/" className="flex inline-flex mb-10 group">
           <Logo />
         </Link>
         
