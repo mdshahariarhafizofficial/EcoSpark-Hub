@@ -21,8 +21,8 @@ export const metadata: Metadata = {
   description: 'The world\'s first community-driven ecosystem for ecological innovation. Fund, share, and realize sustainable projects that change the world.',
   keywords: 'sustainability, eco-innovation, green technology, community funding, environmental projects',
   icons: {
-    icon: '/icon.svg',
-    apple: '/icon.svg',
+    icon: '/favicon.png',
+    apple: '/favicon.png',
   },
   openGraph: {
     type: 'website',
