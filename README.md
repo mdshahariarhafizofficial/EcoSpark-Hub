@@ -44,34 +44,45 @@ EcoSpark Hub is built on the principle of **Atomic Design**, ensuring that every
 
 ---
 
-## ✨ Key Features
+## 🎯 Features
 
-### 🔐 Multi-Role Identity
-*   **Role-Specific Navigation**: Dynamically adjusted sidebars for Members and Administrators.
-*   **Secure Access**: Protected routes with client-side state persistence and JWT validation.
-*   **Schema-Driven Forms**: Type-safe data entry via **Zod** and **React Hook Form**.
-
-### 💼 Sustainability Marketplace
-*   **Innovator Dashboard**: Project tracking, funding analytics, and draft management.
-*   **Marketplace Explorer**: Advanced category-based filtering and instant search.
-*   **Interaction Hub**: Integrated voting and nested comment systems for project discourse.
-
-### 💳 Financial Ecosystem
-*   **Stripe Elements**: Seamlessly integrated, secure checkout experiences.
-*   **Polling Verification**: Real-time frontend synchronization with backend payment webhooks.
-*   **Success Visualization**: Dynamic status updates and instant content unlocking.
+- **Authentication UI**: Sleek, validated forms for registration and login with real-time feedback.
+- **Idea Listing & Filtering**: Advanced marketplace explorer with category-level filtering and search persistence.
+- **Pagination**: Efficient server-side pagination for exploring thousands of blueprints without lag.
+- **Voting System**: Interactive UP/DOWN vote interactions with instant UI updates (Optimistic UI).
+- **Comment UI**: Structured, nested discussion threads for technical collaboration on ecological projects.
+- **Payment Flow**: Integrated Stripe Checkout experience with real-time verification and content unlocking.
+- **Dashboard UI**: Comprehensive analytics and management views for both Members and Administrators.
+- **Responsive Design**: Mobile-first architecture ensuring a premium experience on any device size.
 
 ---
 
-## 🛠️ Technical Stack
+## 🛠️ Technologies Used
 
-| Category | Technology |
-| :--- | :--- |
-| **Framework** | Next.js 16 (App Router), React 19 |
-| **State & Data** | TanStack Query (v5), Axios |
-| **Styling** | Tailwind CSS 4, Lucide React, Framer Motion |
-| **Forms** | React Hook Form, Zod |
-| **Payments** | Stripe SDK (@stripe/stripe-js) |
+- **Next.js (App Router)**: Modern React framework for server-side rendering, efficient routing, and image optimization.
+- **React**: The core component-based library for building dynamic and interactive user interfaces.
+- **Tailwind CSS (v4)**: Utility-first CSS framework for rapid, consistent, and highly customizable styling with zero-runtime overhead.
+- **Axios**: Robust promise-based HTTP client for making API requests to the backend server.
+- **TanStack Query (React Query)**: Powerful state management library for fetching, caching, and synchronizing server data.
+- **Framer Motion**: The industry-standard library for creating high-performance animations and gesture interactions.
+- **React Hook Form**: High-performance, flexible form management with easy-to-use validation hooks.
+- **Zod**: TypeScript-first schema declaration and validation library for ensuring input data integrity.
+- **Stripe (@stripe/stripe-js)**: Secure client-side integration for processing global payments and checkout sessions.
+- **Lucide React**: A collection of beautiful, pixel-perfect icons for intuitive visual communication.
+
+---
+
+## 🔗 API Integration
+
+The EcoSpark Hub frontend is designed as a headless client that communicates with the centralized backend API via **Axios**.
+
+- **Connection Hub**: Centralized API logic is located in `src/lib/api.ts`, where the Axios base URL and interceptors are configured.
+- **Environment Variables**:
+  - `NEXT_PUBLIC_API_URL`: The entry point for all backend requests (e.g., `http://localhost:5000/api`).
+  - `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`: Used to initialize the Stripe Elements and handle secure client-side transactions.
+- **Authentication**:
+  - **JWT Tokens**: Handled securely via **HTTP-only cookies** provided by the backend, ensuring protection against XSS.
+  - **Auth Context**: A global React Context (`src/contexts/AuthContext.tsx`) manages the user profile state and session persistence.
 
 ---
 
