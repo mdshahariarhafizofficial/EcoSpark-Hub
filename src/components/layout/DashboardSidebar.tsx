@@ -1,11 +1,11 @@
 'use client';
 
-import { 
-  LayoutDashboard, 
-  Briefcase, 
-  Clock, 
-  Bookmark, 
-  CreditCard, 
+import {
+  LayoutDashboard,
+  Briefcase,
+  Clock,
+  Bookmark,
+  CreditCard,
   Settings,
   Plus,
   ChevronRight,
@@ -65,17 +65,17 @@ export function DashboardSidebar({ isOpen, setIsOpen }: DashboardSidebarProps) {
       {/* Sidebar Header */}
       <div className="p-8 pb-4 relative">
         {setIsOpen && (
-           <button 
-             onClick={() => setIsOpen(false)} 
-             className="absolute top-8 right-6 p-2 text-neutral-400 hover:text-neutral-900 lg:hidden transition-colors"
-           >
-             <X className="w-5 h-5" />
-           </button>
+          <button
+            onClick={() => setIsOpen(false)}
+            className="absolute top-8 right-6 p-2 text-neutral-400 hover:text-neutral-900 lg:hidden transition-colors"
+          >
+            <X className="w-5 h-5" />
+          </button>
         )}
-        <Link href="/" className="flex inline-flex mb-10 group">
+        <Link href="/" className="flex inline-flex mb-5 group">
           <Logo />
         </Link>
-        
+
         <Link href="/dashboard/new">
           <button className="w-full h-14 bg-neutral-900 text-white rounded-2xl font-black text-xs flex items-center justify-center gap-3 hover:bg-neutral-800 transition-all shadow-xl shadow-neutral-900/10 active:scale-95 group uppercase tracking-widest">
             <Plus className="w-4 h-4 group-hover:rotate-90 transition-transform" />
@@ -97,8 +97,8 @@ export function DashboardSidebar({ isOpen, setIsOpen }: DashboardSidebarProps) {
                   href={item.href}
                   className={cn(
                     "flex items-center justify-between px-5 py-3.5 rounded-2xl text-sm font-bold transition-all group",
-                    isActive 
-                      ? "bg-primary-50 text-neutral-900" 
+                    isActive
+                      ? "bg-primary-50 text-neutral-900"
                       : "text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50"
                   )}
                 >
@@ -124,8 +124,8 @@ export function DashboardSidebar({ isOpen, setIsOpen }: DashboardSidebarProps) {
                   href={item.href}
                   className={cn(
                     "flex items-center justify-between px-5 py-3.5 rounded-2xl text-sm font-bold transition-all group",
-                    isActive 
-                      ? "bg-primary-50 text-neutral-900" 
+                    isActive
+                      ? "bg-primary-50 text-neutral-900"
                       : "text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50"
                   )}
                 >
@@ -150,8 +150,8 @@ export function DashboardSidebar({ isOpen, setIsOpen }: DashboardSidebarProps) {
                   href={item.href}
                   className={cn(
                     "flex items-center justify-between px-5 py-3.5 rounded-2xl text-sm font-bold transition-all group",
-                    isActive 
-                      ? "bg-primary-50 text-neutral-900" 
+                    isActive
+                      ? "bg-primary-50 text-neutral-900"
                       : "text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50"
                   )}
                 >
@@ -176,8 +176,8 @@ export function DashboardSidebar({ isOpen, setIsOpen }: DashboardSidebarProps) {
                   href={item.href}
                   className={cn(
                     "flex items-center justify-between px-5 py-3.5 rounded-2xl text-sm font-bold transition-all group",
-                    isActive 
-                      ? "bg-primary-50 text-neutral-900" 
+                    isActive
+                      ? "bg-primary-50 text-neutral-900"
                       : "text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50"
                   )}
                 >
@@ -203,8 +203,8 @@ export function DashboardSidebar({ isOpen, setIsOpen }: DashboardSidebarProps) {
                     href={item.href}
                     className={cn(
                       "flex items-center justify-between px-5 py-3.5 rounded-2xl text-sm font-bold transition-all group",
-                      isActive 
-                        ? "bg-red-50 text-red-900" 
+                      isActive
+                        ? "bg-red-50 text-red-900"
                         : "text-neutral-500 hover:text-red-600 hover:bg-red-50"
                     )}
                   >
@@ -235,7 +235,7 @@ export function DashboardSidebar({ isOpen, setIsOpen }: DashboardSidebarProps) {
             <p className="text-[10px] text-primary-600 truncate font-black uppercase tracking-wider">{user?.role}</p>
           </div>
         </div>
-        <button 
+        <button
           onClick={logout}
           className="w-full h-12 flex items-center gap-3 px-5 rounded-2xl text-xs font-black text-neutral-400 hover:bg-red-50 hover:text-red-600 transition-all uppercase tracking-widest group"
         >
