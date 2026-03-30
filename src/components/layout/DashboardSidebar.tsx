@@ -86,6 +86,34 @@ export function DashboardSidebar({ isOpen, setIsOpen }: DashboardSidebarProps) {
 
       {/* Navigation Groups */}
       <div className="flex-1 px-4 py-6 overflow-y-auto space-y-10">
+        {user?.role === 'ADMIN' && (
+          <div>
+            <h4 className="px-5 text-[10px] font-black text-neutral-400 uppercase tracking-[0.2em] mb-4">Admin Protocol</h4>
+            <nav className="space-y-1.5">
+              {adminNav.map((item) => {
+                const isActive = pathname === item.href;
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={cn(
+                      "flex items-center justify-between px-5 py-3.5 rounded-2xl text-sm font-bold transition-all group",
+                      isActive
+                        ? "bg-red-50 text-red-900"
+                        : "text-neutral-500 hover:text-red-600 hover:bg-red-50"
+                    )}
+                  >
+                    <div className="flex items-center gap-3">
+                      <item.icon className={cn("w-5 h-5 transition-colors", isActive ? "text-red-600" : "text-neutral-400 group-hover:text-red-600")} />
+                      {item.name}
+                    </div>
+                  </Link>
+                );
+              })}
+            </nav>
+          </div>
+        )}
+
         <div>
           <h4 className="px-5 text-[10px] font-black text-neutral-400 uppercase tracking-[0.2em] mb-4">Monitoring</h4>
           <nav className="space-y-1.5">
@@ -191,33 +219,6 @@ export function DashboardSidebar({ isOpen, setIsOpen }: DashboardSidebarProps) {
           </nav>
         </div>
 
-        {user?.role === 'ADMIN' && (
-          <div>
-            <h4 className="px-5 text-[10px] font-black text-neutral-400 uppercase tracking-[0.2em] mb-4">Admin Protocol</h4>
-            <nav className="space-y-1.5">
-              {adminNav.map((item) => {
-                const isActive = pathname === item.href;
-                return (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className={cn(
-                      "flex items-center justify-between px-5 py-3.5 rounded-2xl text-sm font-bold transition-all group",
-                      isActive
-                        ? "bg-red-50 text-red-900"
-                        : "text-neutral-500 hover:text-red-600 hover:bg-red-50"
-                    )}
-                  >
-                    <div className="flex items-center gap-3">
-                      <item.icon className={cn("w-5 h-5 transition-colors", isActive ? "text-red-600" : "text-neutral-400 group-hover:text-red-600")} />
-                      {item.name}
-                    </div>
-                  </Link>
-                );
-              })}
-            </nav>
-          </div>
-        )}
       </div>
 
       {/* Sidebar Footer */}
