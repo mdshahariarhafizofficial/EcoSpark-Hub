@@ -310,35 +310,40 @@ export default function Home() {
             </div>
           ) : (
              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-               {featuredIdeas?.map((idea: any) => (
+               {featuredIdeas?.map((idea: any, index: number) => {
+                 const fallbacks = [
+                   'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=800',
+                   'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=800',
+                   'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=800',
+                   'https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=800',
+                   'https://images.unsplash.com/photo-1433086966358-54859d0ed716?q=80&w=800'
+                 ];
+                 const fallbackImageUrl = fallbacks[index % fallbacks.length];
+                 
+                 return (
                  <motion.div key={idea.id} className="cursor-pointer group h-full">
                     <Card className="flex flex-col group card-hover border-neutral-200 overflow-hidden h-full bg-white rounded-3xl">
                       <div className="relative h-60 overflow-hidden bg-neutral-100 shrink-0">
                         {(() => {
-                           let firstImage = null;
-                           if (Array.isArray(idea.images) && idea.images.length > 0) {
+                           let firstImage = fallbackImageUrl;
+                           if (Array.isArray(idea.images) && idea.images.length > 0 && typeof idea.images[0] === 'string' && idea.images[0].length > 10) {
                               firstImage = idea.images[0];
                            } else if (typeof idea.images === 'string') {
                               try { 
                                 const parsed = JSON.parse(idea.images); 
-                                if (Array.isArray(parsed) && parsed.length > 0) firstImage = parsed[0];
+                                if (Array.isArray(parsed) && parsed.length > 0 && typeof parsed[0] === 'string' && parsed[0].length > 10) firstImage = parsed[0];
                               } catch(e) {}
                            }
                            
-                           return firstImage && typeof firstImage === 'string' && firstImage.length > 10 ? (
+                           return (
                              <img 
                                src={firstImage} 
                                alt={idea.title} 
                                referrerPolicy="no-referrer" 
                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-                               onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=800'; }}
+                               onError={(e) => { (e.target as HTMLImageElement).src = fallbackImageUrl; }}
                              />
-                           ) : (
-                             <div className="w-full h-full flex flex-col items-center justify-center text-neutral-400 bg-neutral-100">
-                                <Trees className="w-12 h-12 opacity-50 mb-2" />
-                                <span className="text-xs font-bold uppercase tracking-widest opacity-50">Blueprint</span>
-                             </div>
-                           )
+                           );
                         })()}
                         <div className="absolute top-4 right-4">
                            <Badge className={cn(
@@ -385,7 +390,7 @@ export default function Home() {
                       </CardContent>
                     </Card>
                  </motion.div>
-               ))}
+               )})}
              </div>
           )}
         </div>
