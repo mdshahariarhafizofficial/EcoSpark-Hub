@@ -9,7 +9,7 @@ import {
   Leaf, ArrowUp, ArrowDown, MessageCircle, Lock, Zap, Calendar,
   AlertCircle, Bookmark, Share2, Twitter, Linkedin, Facebook, Copy, 
   ChevronRight, ShieldCheck, CheckCircle2, TrendingUp, Sparkles, 
-  Clock, Globe, FileText, Coins, ArrowRight, User, ArrowLeft
+  Clock, Globe, FileText, Coins, ArrowRight, User, ArrowLeft, ThumbsUp, ThumbsDown
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { formatDate, cn } from '@/lib/utils';
@@ -352,7 +352,7 @@ export default function IdeaDetails({ params }: { params: Promise<{ id: string }
                                : "bg-white border-neutral-200 text-neutral-600 hover:border-neutral-300 hover:bg-neutral-50"
                            )}
                         >
-                           <ArrowUp className="w-5 h-5" /> Escalate
+                           <ThumbsUp className="w-5 h-5" /> Escalate
                         </button>
                         <button
                            onClick={() => {
@@ -367,7 +367,7 @@ export default function IdeaDetails({ params }: { params: Promise<{ id: string }
                                : "bg-white border-neutral-200 text-neutral-600 hover:border-neutral-300 hover:bg-neutral-50"
                            )}
                         >
-                           <ArrowDown className="w-5 h-5" /> Dismiss
+                           <ThumbsDown className="w-5 h-5" /> Dismiss
                         </button>
                      </div>
                      
