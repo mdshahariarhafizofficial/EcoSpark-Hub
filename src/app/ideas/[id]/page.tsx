@@ -192,6 +192,7 @@ export default function IdeaDetails({ params }: { params: Promise<{ id: string }
     mutationFn: () => api.post(`/ideas/${id}/bookmark`),
     onSuccess: (res: any) => {
       queryClient.invalidateQueries({ queryKey: ['idea', id] });
+      queryClient.invalidateQueries({ queryKey: ['myBookmarks'] });
       const msg = res?.data?.message ?? res?.message ?? 'Bookmark updated.';
       toast.success(msg);
     },
