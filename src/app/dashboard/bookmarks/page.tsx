@@ -1,11 +1,12 @@
 'use client';
 
 import { useAuth } from '@/contexts/AuthContext';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { api } from '@/lib/api';
+import { toast } from 'sonner';
 import { 
   Bookmark, ArrowUpRight, Search, 
-  ExternalLink, Leaf, Sparkles
+  ExternalLink, Leaf, Sparkles, Trash2
 } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -17,11 +18,21 @@ import { Spinner } from '@/components/ui/Spinner';
 
 export default function BookmarksPage() {
   const { user } = useAuth();
+  const queryClient = useQueryClient();
 
   const { data: myBookmarks, isLoading: bookmarksLoading } = useQuery({
     queryKey: ['myBookmarks'],
     queryFn: () => api.get('/ideas/bookmarks').then(res => res.data),
     enabled: !!user,
+  });
+
+  const removeBookmarkMutation = useMutation({
+    mutationFn: (ideaId: string) => api.post(`/ideas/${ideaId}/bookmark`),
+    onSuccess: (res: any) => {
+      queryClient.invalidateQueries({ queryKey: ['myBookmarks'] });
+      toast.success('Bookmark removed.');
+    },
+    onError: (err: any) => toast.error('Error removing bookmark: ' + err.message),
   });
 
   if (bookmarksLoading) {
@@ -79,11 +90,23 @@ export default function BookmarksPage() {
                         <div className="w-14 h-14 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600 shadow-inner group-hover:rotate-12 transition-transform">
                            <Bookmark className="w-7 h-7 fill-current" />
                         </div>
-                        <Link href={`/ideas/${bookmark.id}`}>
-                           <Button variant="outline" size="icon" className="h-12 w-12 rounded-full border-neutral-100 hover:bg-neutral-50 hover:border-primary-200 transition-colors">
-                              <ArrowUpRight className="w-5 h-5 text-neutral-400 group-hover:text-primary-600" />
+                        <div className="flex gap-2">
+                           <Button 
+                              variant="outline" 
+                              size="icon" 
+                              onClick={() => removeBookmarkMutation.mutate(bookmark.id)}
+                              disabled={removeBookmarkMutation.isPending}
+                              title="Remove Bookmark"
+                              className="h-12 w-12 rounded-full border-neutral-100 group/remove hover:bg-red-50 hover:border-red-200 transition-colors"
+                           >
+                              <Trash2 className="w-5 h-5 text-neutral-400 group-hover/remove:text-red-500" />
                            </Button>
-                        </Link>
+                           <Link href={`/ideas/${bookmark.id}`}>
+                              <Button variant="outline" size="icon" className="h-12 w-12 rounded-full border-neutral-100 hover:bg-neutral-50 hover:border-primary-200 transition-colors">
+                                 <ArrowUpRight className="w-5 h-5 text-neutral-400 group-hover:text-primary-600" />
+                              </Button>
+                           </Link>
+                        </div>
                      </div>
                      
                      <div className="space-y-4">
