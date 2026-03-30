@@ -173,15 +173,13 @@ export default function RegistryPage() {
 
                         <div className="flex gap-2">
                            {(idea.status !== 'APPROVED' && idea.status !== 'UNDER_REVIEW') && (
-                             <>
                                <Link href={`/dashboard/edit/${idea.id}`}>
                                   <Button variant="outline" size="icon" className="h-14 w-14 rounded-xl border-neutral-100 text-neutral-400 hover:text-primary-600 hover:border-primary-100 bg-white shadow-sm transition-all"><Edit className="w-5 h-5" /></Button>
                                </Link>
-                               <Button onClick={() => setDeleteId(idea.id)} variant="outline" size="icon" className="h-14 w-14 rounded-xl border-neutral-100 text-neutral-400 hover:text-secondary-600 hover:border-secondary-100 bg-white shadow-sm transition-all"><Trash2 className="w-5 h-5" /></Button>
-                             </>
                            )}
+                           <Button onClick={() => setDeleteId(idea.id)} variant="outline" size="icon" className="h-14 w-14 rounded-xl border-neutral-100 text-neutral-400 hover:text-secondary-600 hover:border-secondary-100 bg-white shadow-sm transition-all" title="Terminate Protocol"><Trash2 className="w-5 h-5" /></Button>
                            {(idea.status === 'APPROVED' || idea.status === 'UNDER_REVIEW') && (
-                              <div className="p-4 bg-neutral-50/50 rounded-xl border border-neutral-100 flex items-center justify-center text-neutral-300" title="Actions locked during active audit.">
+                              <div className="p-4 bg-neutral-50/50 rounded-xl border border-neutral-100 flex items-center justify-center text-neutral-300" title="Editing locked during active audit.">
                                  <ShieldCheck className="w-5 h-5" />
                               </div>
                            )}
